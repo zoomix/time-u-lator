@@ -1,0 +1,20 @@
+<!doctype html>
+<html ng-app>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+  <script src="http://datejs.googlecode.com/files/date.js"></script>
+  <script src="src/app.js">
+
+  </script>
+</head>
+<body>
+  <div ng-controller="TimeCtrl">
+	  <input type="text" ng-model="timeExpression" placeholder="Enter your expression">
+	  <hr>
+    <h3 ng-show="examplesOn">Examples</h3>
+	  <ul>
+	  	<li ng-repeat="result in results()">{{result}}</li>
+	  </ul>
+  </div>
+</body>
+</html> 
