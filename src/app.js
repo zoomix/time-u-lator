@@ -7,10 +7,7 @@ function TimeCtrl($scope) {
     if($scope.timeExpression && $scope.timeExpression.length > 0) {
       $scope.examplesOn = false;
       var exp = $scope.timeExpression;
-      var date = parseTime(exp);
-
-
-      return [ formatAsDate(date), formatAsTime(date) ];
+      return [ parse(exp) ]
     } else {
       $scope.examplesOn = true;
       return examples;
@@ -19,25 +16,55 @@ function TimeCtrl($scope) {
 }
 
 function parse(string) {
-  return "parsed";
+  return formatAsTime(recurse(string));
 }
 
-function getSum(string) {
-  return "summa";
+function recurse(string) {
+  string = string.trim();
+  if(string.length <= 2 && string.indexOf(':') == -1) {
+    string = string + ":00" //Looks like somebody omitted the minute markers
+  }
+  if(string.indexOf("+") > 0) {
+    var parts = string.split("+");
+    return getSum(parts);
+  } else if(string.indexOf("->") > 0) {
+    var parts = string.split("->");
+    return getDuration(parts);
+  } else {
+    return Date.parse(string);
+  }
 }
 
-function getDuration(string) {
-  return "kaka";
+function getSum(parts) {
+  var sum = 0;
+  var baseTimestamp = null; 
+  for(var i in parts) {
+    var date = recurse(parts[i])
+    if(baseTimestamp == null) {
+      baseTimestamp = new Date(date);
+      baseTimestamp.clearTime();
+    }
+    sum += (date.getTime() - baseTimestamp);
+  }
+  return utcTime(sum);
 }
 
-
-function parseTime(timeString) {
-  return Date.parse(timeString);
+function getDuration(parts) {
+  var start = recurse(parts[0]).getTime();
+  var end   = recurse(parts[1]).getTime();
+  return utcTime(end - start);
 }
+
+function utcTime(timeInMilis) {
+  var date = new Date(0);
+  date.setTime(timeInMilis + date.getTimezoneOffset()*60*1000);
+  return date;
+}
+
 
 function formatAsDate(date) {
   return date.toString("yyyy-MM-dd");
 }
 function formatAsTime(date) {
-  return date.toString("HH:mm:ss");
+  return date.toString("HH:mm");
 }
