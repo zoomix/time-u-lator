@@ -20,6 +20,16 @@ describe("Durations. ", function() {
         expect(result).toEqual("02:30");
     });
 
+    it("doesnt die on partials", function() {
+        var result = parse("11:00 ->");
+        expect(result).toEqual("11:00");
+    })
+
+    it("doesnt die on partials with space", function() {
+        var result = parse("11:00 -> ");
+        expect(result).toEqual("11:00");
+    })
+
 });
 
 describe("Sums. ", function() {
@@ -27,6 +37,11 @@ describe("Sums. ", function() {
 		var result = parse("12:30 + 01:15");
 		expect(result).toEqual("13:45")
 	});
+
+    it("doesnt die on partials", function() {
+        var result = parse("11:00 +");
+        expect(result).toEqual("11:00");
+    })
 });
 
 describe("Sums durations. ", function() {

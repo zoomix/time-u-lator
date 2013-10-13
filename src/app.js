@@ -39,20 +39,26 @@ function getSum(parts) {
   var sum = 0;
   var baseTimestamp = null; 
   for(var i in parts) {
-    var date = recurse(parts[i])
-    if(baseTimestamp == null) {
-      baseTimestamp = new Date(date);
-      baseTimestamp.clearTime();
+    if(parts[i]) {
+      var date = recurse(parts[i])
+      if(baseTimestamp == null) {
+        baseTimestamp = new Date(date);
+        baseTimestamp.clearTime();
+      }
+      sum += (date.getTime() - baseTimestamp);
     }
-    sum += (date.getTime() - baseTimestamp);
   }
   return utcTime(sum);
 }
 
 function getDuration(parts) {
-  var start = recurse(parts[0]).getTime();
-  var end   = recurse(parts[1]).getTime();
-  return utcTime(end - start);
+  if(parts.length == 2 && parts[1]) {
+    var start = recurse(parts[0]).getTime();
+    var end   = recurse(parts[1]).getTime();
+    return utcTime(end - start);
+  } else {
+    return recurse(parts[0])
+  }
 }
 
 function utcTime(timeInMilis) {
