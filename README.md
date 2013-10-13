@@ -1,5 +1,7 @@
 ##date calculator, aka The Time-u-lator 9000.
 
+See [it running here](http://zoomix.github.io/time-u-lator/) for examples.
+
 I needed a simple date / time calculator that'll add up durations. For time reporting and stuff. I hate figuring out what 17:42 - 11:58 is in actual hours.
 
 Say you showed up at work at 8:23 and went to lunch at 11:47. They had the taco buffet so you naturally stained your shirt. You paniced, washed it and had to stand under the handdrier in the mens room for 45 minutes trying to make it look like you haven't pissed yourself. It's not gonna work. All you've got now is a watery pink stain across your belly. The fucking power-tie makes it look like you're in a circus. Why do you DO that to yourself?
@@ -10,7 +12,7 @@ But how many hours was that? Phear no more, loser. Time-u-lator 9000 is Here. No
 
     8:23 -> 11:47 + 13:12 -> 17:49
 
-and the app will figure out how much the company owes you. Neat.
+and the app will figure out how much the company owes you. Neat. [See it live](http://zoomix.github.io/time-u-lator/) 
 
 
 
