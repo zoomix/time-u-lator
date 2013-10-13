@@ -1,6 +1,6 @@
-== date calulcator ==
+##date calulcator
 
-Needed a simple date calculator that'll add upp durations. For time reporting and stuff. I hate figuring out what 17:42 - 11:58 is in actual hours.
+I needed a simple date calculator that'll add up durations. For time reporting and stuff. I hate figuring out what 17:42 - 11:58 is in actual hours.
 
 Uses jasmine to test and angular to hotwire. 
 
