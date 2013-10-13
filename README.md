@@ -1,4 +1,4 @@
-##date calulcator
+##date calculator
 
 I needed a simple date calculator that'll add up durations. For time reporting and stuff. I hate figuring out what 17:42 - 11:58 is in actual hours.
 
